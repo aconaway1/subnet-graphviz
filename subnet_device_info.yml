@@ -1,0 +1,21 @@
+subnets:
+  - subnet: 172.16.0.0/24
+  - subnet: 172.16.1.0/24
+  - subnet: 172.16.2.0/24
+  - subnet: 172.16.3.0/24
+  - subnet: 172.16.4.0/24
+  - subnet: 172.16.5.0/25
+  - subnet: 172.16.5.128/25
+devices:
+  - device: ROUTER A
+    addresses:
+      - 172.16.0.1
+  - device: ROUTER B
+    addresses:
+      - 172.16.0.2
+      - 172.16.1.2
+  - device: ROUTER C
+    addresses:
+      - 172.16.5.150
+      - 172.16.3.8
+      - 172.16.5.88

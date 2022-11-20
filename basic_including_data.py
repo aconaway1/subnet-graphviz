@@ -27,16 +27,15 @@ def main():
         {"device": "ROUTER E", "addresses": ["192.168.2.5", "10.0.2.5"]}
     ]
 
-    graph = graphviz.Digraph("Testing stuff", engine='neato')
+    graph = graphviz.Digraph("Testing stuff", engine='circo', strict=False)
     graph.edge_attr.update(arrowhead='none')
     graph.node_attr.update(shape='box')
 
     for subnet in subnets:
         if 'label' in subnet.keys():
-            subnet_node = graph.node(subnet['subnet'], label=subnet['label'])
-            subnet_node.attr['shape'] = "oval"
+            subnet_node = graph.node(subnet['subnet'], label=subnet['label'], shape="diamond")
         else:
-            subnet_node = graph.node(subnet['subnet'])
+            subnet_node = graph.node(subnet['subnet'], shape="oval", fillcolor="blue", style='filled', fontcolor="white")
             # subnet_node.attr['shape'] = "oval"
 
         if 'adj' in subnet.keys():
@@ -47,7 +46,7 @@ def main():
         if 'label' in device.keys():
             graph.node(device['device'], label=device['label'])
         else:
-            graph.node(device['device'])
+            graph.node(device['device'], fillcolor="green", style="filled")
 
         if 'addresses' in device.keys():
             for address in device['addresses']:
@@ -56,7 +55,7 @@ def main():
                     if ipaddress.ip_address(address) in checked_subnet.hosts():
                         if debug:
                             print(f"{address} is a part of {subnet['subnet']}.")
-                        graph.edge(subnet['subnet'], device['device'], headlabel=address)
+                        graph.edge(subnet['subnet'], device['device'], headlabel=address, labelfontsize="8")
 
     print(f"{graph.source}")
     graph.view()

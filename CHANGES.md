@@ -1,1 +1,3 @@
-This works but is ugly. I'll fix it later.
+* Layout to "circo"
+* Head label font size down to 8
+* 

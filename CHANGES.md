@@ -1,3 +1,7 @@
-* Added basic_import_yaml.py: Imports a YAML file with the subnet and device info.
-* Updated README.md with more options
-* Added basic_import_netbox.py: Imports subnet and device info from Netbox. INCOMPLETE!!!!
+* feature/netbox_import
+
+Importing from Netbox
+Had to cast the Recordset as a list to iterate through several times
+
+BUGS:
+Big diagrams are truncated when viewed
